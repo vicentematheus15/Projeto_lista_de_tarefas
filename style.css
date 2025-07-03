@@ -26,10 +26,19 @@ header{
     display: flex;
     justify-content: space-around;
 }
+#nenhumaTarefa{
+    text-align: center;
+
+}
 .tarefas{
     display: flex;
     align-items: center;
     height: 60%;
     width: 100%;
     justify-content: center;
+}
+#tarefas{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }

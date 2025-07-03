@@ -14,9 +14,9 @@ function adicionarTarefa() {
 }
 
 function mostrarTarefas() {
-  let tarefas = document.getElementById("tarefas");
+  let nenhumaTarefa = document.getElementById("nenhumaTarefa");
 
-  tarefas.innerHTML = "";
+  nenhumaTarefa.innerHTML = "";
 
 
   listaTarefas.forEach((tarefa, index) => {
@@ -29,5 +29,5 @@ function mostrarTarefas() {
 
     tarefas.appendChild(div);
   });
-  mostrarTarefas();
+  
 }
