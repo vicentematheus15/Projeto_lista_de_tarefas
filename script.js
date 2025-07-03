@@ -1,37 +1,33 @@
-let tarefasPendentes = [
-{
-    descricao:"Exemplo de descrição 1",
-    status:"Pendente"
-}
-]
-let tarefasFeitas = [
-{
-    descricao:"Exemplo de descrição 1",
-    status:"Feito"
-}
-]
+let listaTarefas = [
+  {
+    descricao: "Exemplo de descrição 1",
+  },
+];
 
-function adicionarTarefa(){
-    let descricao = document.getElementById("novaTarefa").value
-    tarefasPendentes.push(
-        {
-            descricao: descricao,
-            status: "Pendente"
-        }
-    )
+function adicionarTarefa() {
+  let tarefa = prompt("Digite sua tarefa");
+  listaTarefas.push({
+    descricao: tarefa,
+  });
 
-    // mostrarTarefas()
+  mostrarTarefas();
 }
 
-function mostrarTarefas(){
-    tarefasPendentes.forEach((tarefa, index) => {
-        let div = document.createElement("div")
-        div.setAttribute("class", "tarefa")
+function mostrarTarefas() {
+  let tarefas = document.getElementById("tarefas");
 
-        div.innerHTML = `
-            <input type="checkbox" id="${index}" class="tarefasPendentes">${tarefa.descricao}
-            <button class="excluirTarefa">Excluir</button>`
+  tarefas.innerHTML = "";
 
-    })
-    mostrarTarefas()
+
+  listaTarefas.forEach((tarefa, index) => {
+    let div = document.createElement("div");
+    div.setAttribute("class", "tarefas");
+
+    div.innerHTML = `
+            <input type="checkbox" id="${index}" >${tarefa.descricao}
+            <button class="btExcluirTarefa" onclick="excluirTarefa()">Excluir</button>`;
+
+    tarefas.appendChild(div);
+  });
+  mostrarTarefas();
 }

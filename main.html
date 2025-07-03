@@ -10,10 +10,10 @@
 </head>
 <body>
     <header>
-        <h1 id="tituloPagina">Lista de tarefas</h1>
+        <h1 id="tituloPagina">To-Do List</h1>
             <div id="novasTarefas">
-                <input type="text" id="novaTarefa" placeholder="Adicione uma nova tarefa">
-                <button class="adicionarTarefa" onclick="adicionarTarefa()">Adicionar</button>
+                
+                <button class="btAdicionarTarefa" onclick="adicionarTarefa()">Adicionar tarefa</button>
             </div>
 
             <div id="statusTarefa">
@@ -22,12 +22,9 @@
             </div>
     </header>
     
-    <div id="listaTarefas">
-        <div class="tarefas">    
-            <input type="checkbox" class="tarefasPendentes">Tarefa 1
-            <button class="excluirTarefa">Excluir</button>
-        </div>
-
+    <div class="tarefas" id="tarefas">
+        <input type="checkbox">Nenhuma tarefa
+        <button class="btExcluirTarefa">Excluir</button>
     </div>
     
 </body>
