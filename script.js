@@ -8,6 +8,7 @@ function adicionarTarefa() {
   });
 
   mostrarTarefas();
+  contagemTarefas()
 }
 
 function nenhumaTarefa() {
@@ -41,10 +42,18 @@ function excluirTarefa(index) {
   let idParaRemover = `${index}`;
   listaTarefas.splice(idParaRemover, 1);
   nenhumaTarefa()
+  contagemTarefas()
 }
 
 function contagemTarefas(){
   statusTarefa.innerHTML = ""
   let tarefasPendentes = document.createElement("tarefasPendentes")
   tarefasPendentes.setAttribute("class", "statusTarefa")
+  tarefasPendentes.innerHTML = `<h5>Tarefas Pendentes: ${listaTarefas.length}</h5>`
+  statusTarefa.appendChild(tarefasPendentes)
+
+  let tarefasFeitas = document.createElement("tarefasFeitas")
+  tarefasFeitas.setAttribute("class", "statusTarefa")
+  tarefasFeitas.innerHTML = `<h5>Tarefas Feitas: ? de ${listaTarefas.length}</h5>`
+  statusTarefa.appendChild(tarefasFeitas)
 }
