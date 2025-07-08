@@ -27,16 +27,29 @@ function nenhumaTarefa() {
 }
 
 function isCheck(index) {
-  let check = document.getElementById(index);
-  if (check.checked) {
-    listaTarefasFeitas.push([{index}]);
-    console.log(listaTarefasFeitas.length)
-    console.log((listaTarefasFeitas))
-    }
-    else{
-      listaTarefasFeitas.pop();
-    }
-    check.addEventListener("click", contagemTarefas())
+  // 1) Trocar o valor de 'checked'
+  // a) Pego o objeto pelo id
+  // b) Troca o checked utilizando '!checked'
+  // console.log(listaTarefas)
+  let check = document.getElementById(`${index}`);
+  listaTarefas[index].checked = check.checked;
+  // c) se for true, foi concluída e inclui nao array de listaTarefasFeitas
+  // o método .filter() espera uma função que retorna true ou false. Ele só inclui no novo array os elementos para os quais essa função retorna true.
+  // Quando checked for true, subtraia de tarefas pendentes: tarefas - tarefasFeitas = tarefasPendentes, ou exclui de tarefasPendentes e inclui em tarefasConcluídas
+  listaTarefasFeitas = listaTarefas.filter((tarefa) => tarefa.checked);
+  // 2) Sublinhar a descrição se check for true e voltar ao normal se checked for false
+  // if(listaTarefasFeitas[index].checked == true){
+    // }
+    let tarefasFeitas = document.getElementById(index)
+      tarefasFeitas.classList.remove('tarefas');
+      tarefasFeitas.classList.add('tarefasFeitas');
+    
+    
+    check.addEventListener("click", contagemTarefas());
+}
+
+function trocaClasse(){
+  let div = document.querySelector()
 }
 
 function mostrarTarefas() {
@@ -52,7 +65,7 @@ function mostrarTarefas() {
 
     tarefas.appendChild(div);
   });
-  console.log(listaTarefas)
+  // console.log(listaTarefas);
 }
 
 function excluirTarefa(index) {
@@ -66,7 +79,9 @@ function contagemTarefas() {
   statusTarefa.innerHTML = "";
   let tarefasPendentes = document.createElement("tarefasPendentes");
   tarefasPendentes.setAttribute("class", "statusTarefa");
-  tarefasPendentes.innerHTML = `<h5>Tarefas Pendentes: ${listaTarefas.length}</h5>`;
+  tarefasPendentes.innerHTML = `<h5>Tarefas Pendentes: ${
+    listaTarefas.length - listaTarefasFeitas.length
+  }</h5>`;
   statusTarefa.appendChild(tarefasPendentes);
 
   let tarefasFeitas = document.createElement("tarefasFeitas");
