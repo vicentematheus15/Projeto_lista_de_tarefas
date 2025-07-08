@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="./script.js"></script>
     <link rel="stylesheet" href="./style.css">
     <link rel="shortcut icon" href="https://ava.sesisenai.org.br/theme/image.php/senai/theme/1749056005/favicon">
     <title>Workshop To-Do List</title>
@@ -11,23 +10,24 @@
 <body>
     <header>
         <h1 id="tituloPagina">To-Do List</h1>
-            <div id="novasTarefas">
+        <div id="novasTarefas">
                 
-                <button class="btAdicionarTarefa" onclick="adicionarTarefa()">Adicionar tarefa</button>
-            </div>
-
-            <div id="statusTarefa">
-                <h5 id="contTarefasPendentes">Tarefas Pendentes:</h5>
-                <h5 id="contTarefasFeitas">Tarefas Feitas:</h5>
-            </div>
+            <button class="btAdicionarTarefa" onclick="adicionarTarefa()">Adicionar tarefa</button>
+        </div>
+        
+        <div id="statusTarefa" class="statusTarefa">
+            <h5 id="contTarefasPendentes">Tarefas Pendentes: 0</h5>
+            <h5 id="contTarefasFeitas">Tarefas Feitas: 0</h5>
+        </div>
     </header>
     
     <div class="tarefas">
         <div id="tarefas">
-           <h3 id="nenhumaTarefa">Nenhuma tarefa criada</h3>
+            <h3 id="nenhumaTarefa">Nenhuma tarefa criada</h3>
             
         </div>
     </div>
     
+    <script src="./script.js"></script>
 </body>
 </html>
