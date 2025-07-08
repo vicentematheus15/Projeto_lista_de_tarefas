@@ -38,18 +38,18 @@ function isCheck(index) {
   // Quando checked for true, subtraia de tarefas pendentes: tarefas - tarefasFeitas = tarefasPendentes, ou exclui de tarefasPendentes e inclui em tarefasConcluídas
   listaTarefasFeitas = listaTarefas.filter((tarefa) => tarefa.checked);
   // 2) Sublinhar a descrição se check for true e voltar ao normal se checked for false
-  // if(listaTarefasFeitas[index].checked == true){
-    // }
-    let tarefasFeitas = document.getElementById(index)
-      tarefasFeitas.classList.remove('tarefas');
-      tarefasFeitas.classList.add('tarefasFeitas');
-    
-    
-    check.addEventListener("click", contagemTarefas());
+  
+  // trocaClasse(index)
+  check.addEventListener("click", contagemTarefas());
 }
 
-function trocaClasse(){
-  let div = document.querySelector()
+function trocaClasse(tarefa){
+  let mudarClasse = document.getElementsByClassName(tarefa)
+  if(listaTarefasFeitas[index].checked == true){
+    mudarClasse.classList.replace(tarefaPendente, tarefasFeitas)
+  }else{
+    mudarClasse.classList.replace(tarefasFeitas, tarefaPendente)
+  }
 }
 
 function mostrarTarefas() {
@@ -60,7 +60,7 @@ function mostrarTarefas() {
     div.setAttribute("class", "tarefas");
 
     div.innerHTML = `
-      <label onclick="isCheck(${index})"><input type="checkbox" id="${index}" >${tarefa.descricao}</label>
+      <label class="tarefa" onclick="isCheck(${index})"><input type="checkbox" id="${index}" >${tarefa.descricao}</label>
       <button class="btExcluirTarefa" onclick="excluirTarefa(${index})">Excluir</button>`;
 
     tarefas.appendChild(div);
