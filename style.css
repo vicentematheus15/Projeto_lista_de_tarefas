@@ -22,7 +22,7 @@ header{
     padding: 1rem;
     
 }
-#statusTarefa{
+.statusTarefa{
     display: flex;
     justify-content: space-around;
 }
