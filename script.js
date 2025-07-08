@@ -1,14 +1,17 @@
 let listaTarefas = [];
-
+let listaTarefasFeitas = [];
+let id = 1;
 
 function adicionarTarefa() {
   let tarefa = prompt("Digite sua tarefa");
   listaTarefas.push({
+    id: id++,
     descricao: tarefa,
+    checked: false,
   });
 
   mostrarTarefas();
-  contagemTarefas()
+  contagemTarefas();
 }
 
 function nenhumaTarefa() {
@@ -22,6 +25,20 @@ function nenhumaTarefa() {
     mostrarTarefas();
   }
 }
+
+function isCheck(index) {
+  let check = document.getElementById(index);
+  if (check.checked) {
+    listaTarefasFeitas.push([{index}]);
+    console.log(listaTarefasFeitas.length)
+    console.log((listaTarefasFeitas))
+    }
+    else{
+      listaTarefasFeitas.pop();
+    }
+    check.addEventListener("click", contagemTarefas())
+}
+
 function mostrarTarefas() {
   tarefas.innerHTML = "";
 
@@ -30,30 +47,30 @@ function mostrarTarefas() {
     div.setAttribute("class", "tarefas");
 
     div.innerHTML = `
-      <input type="checkbox" id="${index}" >${tarefa.descricao}
+      <label onclick="isCheck(${index})"><input type="checkbox" id="${index}" >${tarefa.descricao}</label>
       <button class="btExcluirTarefa" onclick="excluirTarefa(${index})">Excluir</button>`;
-
 
     tarefas.appendChild(div);
   });
+  console.log(listaTarefas)
 }
 
 function excluirTarefa(index) {
   let idParaRemover = `${index}`;
   listaTarefas.splice(idParaRemover, 1);
-  nenhumaTarefa()
-  contagemTarefas()
+  nenhumaTarefa();
+  contagemTarefas();
 }
 
-function contagemTarefas(){
-  statusTarefa.innerHTML = ""
-  let tarefasPendentes = document.createElement("tarefasPendentes")
-  tarefasPendentes.setAttribute("class", "statusTarefa")
-  tarefasPendentes.innerHTML = `<h5>Tarefas Pendentes: ${listaTarefas.length}</h5>`
-  statusTarefa.appendChild(tarefasPendentes)
+function contagemTarefas() {
+  statusTarefa.innerHTML = "";
+  let tarefasPendentes = document.createElement("tarefasPendentes");
+  tarefasPendentes.setAttribute("class", "statusTarefa");
+  tarefasPendentes.innerHTML = `<h5>Tarefas Pendentes: ${listaTarefas.length}</h5>`;
+  statusTarefa.appendChild(tarefasPendentes);
 
-  let tarefasFeitas = document.createElement("tarefasFeitas")
-  tarefasFeitas.setAttribute("class", "statusTarefa")
-  tarefasFeitas.innerHTML = `<h5>Tarefas Feitas: ? de ${listaTarefas.length}</h5>`
-  statusTarefa.appendChild(tarefasFeitas)
+  let tarefasFeitas = document.createElement("tarefasFeitas");
+  tarefasFeitas.setAttribute("class", "statusTarefa");
+  tarefasFeitas.innerHTML = `<h5>Tarefas Feitas: ${listaTarefasFeitas.length} de ${listaTarefas.length}</h5>`;
+  statusTarefa.appendChild(tarefasFeitas);
 }
