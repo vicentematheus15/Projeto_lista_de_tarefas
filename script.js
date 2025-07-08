@@ -1,5 +1,6 @@
 let listaTarefas = [];
 
+
 function adicionarTarefa() {
   let tarefa = prompt("Digite sua tarefa");
   listaTarefas.push({
@@ -9,11 +10,18 @@ function adicionarTarefa() {
   mostrarTarefas();
 }
 
-function mostrarTarefas() {
-  if (listaTarefas.length == 1) {
-    let nenhumaTarefa = document.getElementById("nenhumaTarefa");
-    nenhumaTarefa.innerHTML = "";
+function nenhumaTarefa() {
+  if (listaTarefas.length < 1) {
+    tarefas.innerHTML = "";
+    let nenhumaTarefa = document.createElement("nenhumaTarefa");
+    nenhumaTarefa.setAttribute("class", "tarefas");
+    nenhumaTarefa.innerHTML = `<h3>Nenhuma tarefa criada</h3>`;
+    tarefas.appendChild(nenhumaTarefa);
+  } else {
+    mostrarTarefas();
   }
+}
+function mostrarTarefas() {
   tarefas.innerHTML = "";
 
   listaTarefas.forEach((tarefa, index) => {
@@ -21,11 +29,9 @@ function mostrarTarefas() {
     div.setAttribute("class", "tarefas");
 
     div.innerHTML = `
-            <input type="checkbox" id="${index}" >${tarefa.descricao}
-            <button class="btExcluirTarefa" onclick="excluirTarefa(${index})">Excluir</button>`;
+      <input type="checkbox" id="${index}" >${tarefa.descricao}
+      <button class="btExcluirTarefa" onclick="excluirTarefa(${index})">Excluir</button>`;
 
-    // console.log(listaTarefas)
-    // console.log(listaTarefas.length);
 
     tarefas.appendChild(div);
   });
@@ -33,7 +39,12 @@ function mostrarTarefas() {
 
 function excluirTarefa(index) {
   let idParaRemover = `${index}`;
-  console.log(idParaRemover);
   listaTarefas.splice(idParaRemover, 1);
-  mostrarTarefas();
+  nenhumaTarefa()
+}
+
+function contagemTarefas(){
+  statusTarefa.innerHTML = ""
+  let tarefasPendentes = document.createElement("tarefasPendentes")
+  tarefasPendentes.setAttribute("class", "statusTarefa")
 }
