@@ -39,50 +39,46 @@ function isCheck(index) {
   // 2) Sublinhar a descrição se check for true e voltar ao normal se checked for false
   console.log(document.getElementById(index).parentElement);
   // trocaClasse(index)
-  let label = check.parentElement
-  if(check.checked){
+  let label = check.parentElement;
+  if (check.checked) {
     // label.classList.add("concluida")
-    label.classList.replace("pendente", "concluida")
-  }else{
+    label.classList.replace("pendente", "concluida");
+  } else {
     // label.classList.remove("concluida")
-    label.classList.replace("concluida", "pendente")
+    label.classList.replace("concluida", "pendente");
   }
 
   check.addEventListener("click", contagemTarefas());
 }
 
-function trocaClasse(){
-  console.log("ok")
-  let mudarClasse = document.getElementsByClassName(tarefa)
-  if(listaTarefasFeitas[index].checked == true){
-    mudarClasse.classList.replace(tarefaPendente, tarefasFeitas)
-  }else{
-    mudarClasse.classList.replace(tarefasFeitas, tarefaPendente)
+function trocaClasse() {
+  console.log("ok");
+  let mudarClasse = document.getElementsByClassName(tarefa);
+  if (listaTarefasFeitas[index].checked == true) {
+    mudarClasse.classList.replace(tarefaPendente, tarefasFeitas);
+  } else {
+    mudarClasse.classList.replace(tarefasFeitas, tarefaPendente);
   }
 }
 
 function mostrarTarefas() {
+  tarefas.innerHTML = "";
 
-  tarefas.innerHTML = "" ;
-  
   listaTarefas.forEach((tarefa, index) => {
     let div = document.createElement("div");
     div.setAttribute("class", "tarefas");
-    
-    div.innerHTML = `
-    <label for="${index}" class="pendente"><input type="checkbox" id="${index}" ${tarefa.checked ? "checked" : ""} onclick="isCheck(${index})">${tarefa.descricao}</label>
-    <button class="btExcluirTarefa" onclick="excluirTarefa(${index})">Excluir</button>`;
-    
-    tarefas.appendChild(div);
-    contagemTarefas()
-  });
-}
 
-function excluirTarefa(index) {
-  let idParaRemover = `${index}`;
-  listaTarefas.splice(idParaRemover, 1);
-  nenhumaTarefa();
+    div.innerHTML = `
+    <label for="${index}" class="pendente"><input type="checkbox" id="${index}" ${
+      tarefa.checked ? "checked" : ""
+    } onclick="isCheck(${index})">${tarefa.descricao}</label>
+    <button class="btExcluirTarefa" onclick="excluirTarefa(${index})">Excluir</button>`;
+
+    tarefas.appendChild(div);
+  });
   contagemTarefas();
+  console.log(listaTarefas);
+  console.log(listaTarefasFeitas);
 }
 
 function contagemTarefas() {
@@ -98,4 +94,17 @@ function contagemTarefas() {
   tarefasFeitas.setAttribute("class", "statusTarefa");
   tarefasFeitas.innerHTML = `<h5>Tarefas Feitas: ${listaTarefasFeitas.length} de ${listaTarefas.length}</h5>`;
   statusTarefa.appendChild(tarefasFeitas);
+}
+
+function excluirTarefa(index) {
+  let idParaRemover = `${index}`;
+  isCheck(index);
+  if (listaTarefas[index].checked == true) {
+    listaTarefasFeitas.splice(idParaRemover, 1);
+    listaTarefas.splice(idParaRemover, 1);
+  } else {
+    listaTarefas.splice(idParaRemover, 1);
+  }
+  contagemTarefas();
+  nenhumaTarefa();
 }
