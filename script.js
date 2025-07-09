@@ -47,12 +47,10 @@ function isCheck(index) {
     // label.classList.remove("concluida")
     label.classList.replace("concluida", "pendente");
   }
-
   check.addEventListener("click", contagemTarefas());
 }
 
 function trocaClasse() {
-  console.log("ok");
   let mudarClasse = document.getElementsByClassName(tarefa);
   if (listaTarefasFeitas[index].checked == true) {
     mudarClasse.classList.replace(tarefaPendente, tarefasFeitas);
@@ -73,21 +71,17 @@ function mostrarTarefas() {
       tarefa.checked ? "checked" : ""
     } onclick="isCheck(${index})">${tarefa.descricao}</label>
     <button class="btExcluirTarefa" onclick="excluirTarefa(${index})">Excluir</button>`;
+    }); 
+  tarefas.appendChild(div);
 
-    tarefas.appendChild(div);
-  });
   contagemTarefas();
-  console.log(listaTarefas);
-  console.log(listaTarefasFeitas);
 }
 
 function contagemTarefas() {
   statusTarefa.innerHTML = "";
   let tarefasPendentes = document.createElement("tarefasPendentes");
   tarefasPendentes.setAttribute("class", "statusTarefa");
-  tarefasPendentes.innerHTML = `<h5>Tarefas Pendentes: ${
-    listaTarefas.length - listaTarefasFeitas.length
-  }</h5>`;
+  tarefasPendentes.innerHTML = `<h5>Tarefas Pendentes: ${listaTarefas.length - listaTarefasFeitas.length}</h5>`;
   statusTarefa.appendChild(tarefasPendentes);
 
   let tarefasFeitas = document.createElement("tarefasFeitas");
