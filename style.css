@@ -46,3 +46,8 @@ header{
     flex-direction: column;
     width: 100%;
 }
+.concluida{
+    text-decoration: line-through;
+    color: gray;
+    opacity: 0.7;
+}

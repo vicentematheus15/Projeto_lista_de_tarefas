@@ -39,8 +39,16 @@ function isCheck(index) {
   // 2) Sublinhar a descrição se check for true e voltar ao normal se checked for false
   console.log(document.getElementById(index).parentElement);
   // trocaClasse(index)
-  check.addEventListener("click", contagemTarefas());
+  let label = check.parentElement
+  if(check.checked){
+    // label.classList.add("concluida")
+    label.classList.replace("pendente", "concluida")
+  }else{
+    // label.classList.remove("concluida")
+    label.classList.replace("concluida", "pendente")
+  }
 
+  check.addEventListener("click", contagemTarefas());
 }
 
 function trocaClasse(){
