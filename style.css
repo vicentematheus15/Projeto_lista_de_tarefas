@@ -20,15 +20,10 @@ header{
 }
 #novasTarefas{
     padding: 1rem;
-    
 }
 .statusTarefa{
     display: flex;
     justify-content: space-around;
-}
-
-.tarefasFeitas{
-    text-decoration: line-through;
 }
 #nenhumaTarefa{
     text-align: center;
