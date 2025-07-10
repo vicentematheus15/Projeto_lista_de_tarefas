@@ -4,8 +4,9 @@ let id = 1;
 
 function adicionarTarefa() {
   let tarefa = prompt("Digite sua tarefa");
-  if(tarefa == ""){
-    alert("Preencha o campo para criar uam tarefa!")
+  if(tarefa.trim() == "" || tarefa === null){
+    alert("Preencha o campo para criar uma tarefa!")
+    return
   }else{ 
     listaTarefas.push({
       id: id++,
