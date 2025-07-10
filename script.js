@@ -4,12 +4,16 @@ let id = 1;
 
 function adicionarTarefa() {
   let tarefa = prompt("Digite sua tarefa");
-  listaTarefas.push({
-    id: id++,
-    descricao: tarefa,
-    checked: false,
-  });
-  mostrarTarefas();
+  if(tarefa == ""){
+    alert("Preencha o campo para criar uam tarefa!")
+  }else{ 
+    listaTarefas.push({
+      id: id++,
+      descricao: tarefa,
+      checked: false,
+    });
+    mostrarTarefas();
+  }
 }
 
 function nenhumaTarefa() {
