@@ -69,7 +69,7 @@ function mostrarTarefas() {
     div.setAttribute("class", "tarefas");
 
     div.innerHTML = `
-    <input type="checkbox" id="${index}" ${tarefa.checked ? "checked" : ""} onclick="isCheck(${index})"><label for="${index}">${tarefa.descricao}</label>
+    <label for="${index}" class="tarefas" ><input type="checkbox" id="${index}" ${tarefa.checked ? "checked" : ""} onclick="isCheck(${index})">${tarefa.descricao}</label>
     <button class="btExcluirTarefa" onclick="excluirTarefa(${index})">Excluir</button>`;
     tarefas.appendChild(div);
   });
