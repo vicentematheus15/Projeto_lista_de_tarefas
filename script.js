@@ -4,10 +4,12 @@ let id = 1;
 
 function adicionarTarefa() {
   let tarefa = prompt("Digite sua tarefa");
+// validação: impede entradas vazias ou nulas
   if(tarefa.trim() == "" || tarefa === null){
     alert("Preencha o campo para criar uma tarefa!")
     return
-  }else{ 
+  } else { 
+// adiciona um novo objeto de tarefa à lista de tarefas
     listaTarefas.push({
       id: id++,
       descricao: tarefa,
@@ -18,6 +20,7 @@ function adicionarTarefa() {
 }
 
 function nenhumaTarefa() {
+// se não houver tarefas na lista, limpa o container e escreve uma mensagem de "nenhuma tarefa"
   if (listaTarefas.length < 1) {
     containerTarefas.innerHTML = "";
     let nenhumaTarefa = document.createElement("nenhumaTarefa");
@@ -30,14 +33,12 @@ function nenhumaTarefa() {
 }
 
 function isCheck(id) {
-  // 1) Trocar o valor de 'checked'
-  // a) Pego o objeto pelo id
-  // b) Troca o checked utilizando '!checked'
+  // alterna o valor de 'checked' da tarefa
   let check = document.getElementById(`${id}`);
   let index = listaTarefas.findIndex(tarefa => tarefa.id === id)
   listaTarefas[index].checked = check.checked;
-  // c) se for true, foi concluída e inclui nao array de listaTarefasFeitas
-  // o método .filter() espera uma função que retorna true ou false. Ele só inclui no novo array os elementos para os quais essa função retorna true.
+  // se for true, foi concluída e inclui nao array de listaTarefasFeitas
+  // o método .filter() espera uma função que retorna true ou false. Ele só inclui no novo array os elementos para os quais essa função retorna true
   listaTarefasFeitas = listaTarefas.filter((tarefa) => tarefa.checked);
   check.addEventListener("click", trocaClasse(check));
   check.addEventListener("click", contagemTarefas());
@@ -55,10 +56,12 @@ function trocaClasse(check) {
 function mostrarTarefas() {
   containerTarefas.innerHTML = "";
 
+// itera por cada tarefa na lista
   listaTarefas.forEach((tarefa) => {
     let div = document.createElement("div");
     div.setAttribute("class", "tarefas");
 
+// cria o HTML de cada tarefa com checkbox, label e botão de exclusão
     div.innerHTML = `
     <label for="${tarefa.id}" class="pendente"><input type="checkbox" id="${tarefa.id}" ${
       tarefa.checked ? "checked" : ""
@@ -85,10 +88,11 @@ function contagemTarefas() {
 }
 
 function excluirTarefa(id) {
+// encontra e remove a tarefa no array principal
   let indexTarefa = listaTarefas.findIndex(tarefa => tarefa.id === id)
   let tarefaRemovida = listaTarefas[indexTarefa]
   listaTarefas.splice(indexTarefa, 1)
-
+// se a tarefa já estava concluída, também remove da lista de feitas
   if (tarefaRemovida.checked) {
     let indexTarefaFeita = listaTarefasFeitas.findIndex(tarefa => tarefa.id ===id)
     listaTarefasFeitas.splice(indexTarefaFeita, 1)
