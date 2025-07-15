@@ -19,11 +19,11 @@ function adicionarTarefa() {
 
 function nenhumaTarefa() {
   if (listaTarefas.length < 1) {
-    tarefas.innerHTML = "";
+    containerTarefas.innerHTML = "";
     let nenhumaTarefa = document.createElement("nenhumaTarefa");
     nenhumaTarefa.setAttribute("class", "tarefas");
     nenhumaTarefa.innerHTML = `<h3>Nenhuma tarefa criada</h3>`;
-    tarefas.appendChild(nenhumaTarefa);
+    containerTarefas.appendChild(nenhumaTarefa);
   } else {
     mostrarTarefas();
   }
@@ -53,7 +53,7 @@ function trocaClasse(check) {
 }
 
 function mostrarTarefas() {
-  tarefas.innerHTML = "";
+  containerTarefas.innerHTML = "";
 
   listaTarefas.forEach((tarefa) => {
     let div = document.createElement("div");
@@ -64,7 +64,7 @@ function mostrarTarefas() {
       tarefa.checked ? "checked" : ""
     } onclick="isCheck(${tarefa.id})">${tarefa.descricao}</label>
     <button class="btExcluirTarefa" onclick="excluirTarefa(${tarefa.id})">Excluir</button>`;
-    tarefas.appendChild(div);
+    containerTarefas.appendChild(div);
   });
   contagemTarefas();
 }

@@ -28,12 +28,22 @@ header{
 #nenhumaTarefa{
     text-align: center;
 }
+#main{
+    display: flex;
+    align-items: center;
+    height: 70%;
+    width: 100%;
+}
+#containerTarefas{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
 .tarefas{
     display: flex;
     align-items: center;
-    height: 60%;
     width: 100%;
-    justify-content: center;
+    justify-content: space-between;
 }
 .concluida{
     text-decoration: line-through;
