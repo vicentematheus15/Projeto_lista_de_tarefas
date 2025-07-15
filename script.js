@@ -11,7 +11,7 @@ function adicionarTarefa() {
     listaTarefas.push({
       id: id++,
       descricao: tarefa,
-      checked: false,
+      checked: false
     });
     mostrarTarefas();
   }
@@ -41,7 +41,6 @@ function isCheck(id) {
   listaTarefasFeitas = listaTarefas.filter((tarefa) => tarefa.checked);
   check.addEventListener("click", trocaClasse(check));
   check.addEventListener("click", contagemTarefas());
-  
 }
 
 function trocaClasse(check) {
