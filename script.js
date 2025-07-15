@@ -29,11 +29,12 @@ function nenhumaTarefa() {
   }
 }
 
-function isCheck(index) {
+function isCheck(id) {
   // 1) Trocar o valor de 'checked'
   // a) Pego o objeto pelo id
   // b) Troca o checked utilizando '!checked'
-  let check = document.getElementById(`${index}`);
+  let check = document.getElementById(`${id}`);
+  let index = listaTarefas.findIndex(tarefa => tarefa.id === id)
   listaTarefas[index].checked = check.checked;
   // c) se for true, foi concluída e inclui nao array de listaTarefasFeitas
   // o método .filter() espera uma função que retorna true ou false. Ele só inclui no novo array os elementos para os quais essa função retorna true.
@@ -64,15 +65,15 @@ function isCheck(index) {
 function mostrarTarefas() {
   tarefas.innerHTML = "";
 
-  listaTarefas.forEach((tarefa, index) => {
+  listaTarefas.forEach((tarefa) => {
     let div = document.createElement("div");
     div.setAttribute("class", "tarefas");
 
     div.innerHTML = `
-    <label for="${index}" class="pendente"><input type="checkbox" id="${index}" ${
+    <label for="${tarefa.id}" class="pendente"><input type="checkbox" id="${tarefa.id}" ${
       tarefa.checked ? "checked" : ""
-    } onclick="isCheck(${index})">${tarefa.descricao}</label>
-    <button class="btExcluirTarefa" onclick="excluirTarefa(${index})">Excluir</button>`;
+    } onclick="isCheck(${tarefa.id})">${tarefa.descricao}</label>
+    <button class="btExcluirTarefa" onclick="excluirTarefa(${tarefa.id})">Excluir</button>`;
     tarefas.appendChild(div);
   });
   contagemTarefas();
@@ -93,14 +94,14 @@ function contagemTarefas() {
   statusTarefa.appendChild(tarefasFeitas);
 }
 
-function excluirTarefa(index) {
-  let idParaRemover = `${index}`;
-  isCheck(index);
-  if (listaTarefas[index].checked == true) {
-    listaTarefasFeitas.splice(idParaRemover, 1);
-    listaTarefas.splice(idParaRemover, 1);
-  } else {
-    listaTarefas.splice(idParaRemover, 1);
+function excluirTarefa(id) {
+  let indexTarefa = listaTarefas.findIndex(tarefa => tarefa.id === id)
+  let tarefaRemovida = listaTarefas[indexTarefa]
+  listaTarefas.splice(indexTarefa, 1)
+
+  if (tarefaRemovida.checked) {
+    let indexTarefaFeita = listaTarefasFeitas.findIndex(tarefa => tarefa.id ===id)
+    listaTarefasFeitas.splice(indexTarefaFeita, 1)
   }
   contagemTarefas();
   nenhumaTarefa();
