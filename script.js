@@ -39,23 +39,19 @@ function isCheck(id) {
   // c) se for true, foi concluída e inclui nao array de listaTarefasFeitas
   // o método .filter() espera uma função que retorna true ou false. Ele só inclui no novo array os elementos para os quais essa função retorna true.
   listaTarefasFeitas = listaTarefas.filter((tarefa) => tarefa.checked);
+  check.addEventListener("click", trocaClasse(check));
+  check.addEventListener("click", contagemTarefas());
+  
+}
+
+function trocaClasse(check) {
   let label = check.parentElement;
-  if (check.checked) {
+   if (check.checked) {
     label.classList.replace("pendente", "concluida");
   } else {
     label.classList.replace("concluida", "pendente");
   }
-  check.addEventListener("click", contagemTarefas());
 }
-
-// function trocaClasse() {
-//   let mudarClasse = document.getElementsByClassName(tarefa);
-//   if (listaTarefasFeitas[index].checked == true) {
-//     mudarClasse.classList.replace(tarefaPendente, tarefasFeitas);
-//   } else {
-//     mudarClasse.classList.replace(tarefasFeitas, tarefaPendente);
-//   }
-// }
 
 function mostrarTarefas() {
   tarefas.innerHTML = "";
