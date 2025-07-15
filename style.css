@@ -40,19 +40,24 @@ header{
 .tarefas{
     display: flex;
     align-items: center;
-    height: 10%;
-    width: 60%;
-    justify-content: space-between;
-    background-color:grey;
-    text-align: justify;
+    height: 60%;
+    width: 100%;
+    justify-content: space-around;
 }
 .concluida{
-    display: flex;
-    align-items: center;
-    height: 60%;
-    width: 60%;
-    justify-content: space-between;
-    background-color:grey;
-    text-align: justify;
     text-decoration: line-through;
+    color: gray;
+    opacity: 0.7;
+}
+ul{
+    display: flex;
+    flex-direction:column ;
+    width: 100%;
+    justify-content: space-between;
+}
+li{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    text-align: center;
 }
