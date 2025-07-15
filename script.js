@@ -44,10 +44,10 @@ function isCheck(index) {
   let label = check.parentElement;
   if (check.checked) {
     // label.classList.add("concluida")
-    label.classList.replace("tarefas", "concluida");
+    label.classList.replace("pendente", "concluida");
   } else {
     // label.classList.remove("concluida")
-    label.classList.replace("concluida", "tarefas");
+    label.classList.replace("concluida", "pendente");
   }
   check.addEventListener("click", contagemTarefas());
 }
@@ -69,7 +69,9 @@ function mostrarTarefas() {
     div.setAttribute("class", "tarefas");
 
     div.innerHTML = `
-    <input type="checkbox" id="${index}" ${tarefa.checked ? "checked" : ""} onclick="isCheck(${index})"><label for="${index}">${tarefa.descricao}</label>
+    <label for="${index}" class="pendente"><input type="checkbox" id="${index}" ${
+      tarefa.checked ? "checked" : ""
+    } onclick="isCheck(${index})">${tarefa.descricao}</label>
     <button class="btExcluirTarefa" onclick="excluirTarefa(${index})">Excluir</button>`;
     tarefas.appendChild(div);
   });
