@@ -24,7 +24,7 @@ function nenhumaTarefa() {
   if (listaTarefas.length < 1) {
     containerTarefas.innerHTML = "";
     let nenhumaTarefa = document.createElement("nenhumaTarefa");
-    nenhumaTarefa.setAttribute("class", "tarefas");
+    nenhumaTarefa.setAttribute("id", "nenhumaTarefa");
     nenhumaTarefa.innerHTML = `<h3>Nenhuma tarefa criada</h3>`;
     containerTarefas.appendChild(nenhumaTarefa);
   } else {

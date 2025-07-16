@@ -28,7 +28,7 @@ header{
 #nenhumaTarefa{
     text-align: center;
 }
-#main{
+main{
     display: flex;
     align-items: center;
     height: 70%;
