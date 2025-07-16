@@ -50,3 +50,8 @@ header{
     color: gray;
     opacity: 0.7;
 }
+label{
+    display: flex;
+    gap: 0.2rem;
+    padding: 0.5rem;
+}
